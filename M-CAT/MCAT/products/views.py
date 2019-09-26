@@ -3,5 +3,5 @@ from django.shortcuts import render
 # Create your views here.
 def home(request):
     template = 'home.html'
-    context = {}
+    context = locals()
     return render(request,template,context)
