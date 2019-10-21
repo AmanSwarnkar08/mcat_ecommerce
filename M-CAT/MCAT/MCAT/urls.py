@@ -14,12 +14,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from MCAT import views
+from django.conf.urls import url,include
+from products import views
+from django.conf import settings
+from django.conf.urls.static import static
 
-admin.autodiscover()
 urlpatterns = [
 
-    url(r'^$','views.home',name='home'),
+    #url(r'^$',views.Home.as_view(),name='home'),
+    url(r'^',include('products.urls'),name = 'products_app'),
     url(r'^admin/', admin.site.urls),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
