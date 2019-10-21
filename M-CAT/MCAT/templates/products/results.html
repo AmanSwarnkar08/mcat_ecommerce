@@ -1,0 +1,16 @@
+{% extends 'products/base.html' %}
+{% block head_title2 %}
+Welcome To Our
+{% endblock %}
+{% block body_block %}
+{% load staticfiles %}
+<div class = "container" id="product_list_div">
+  {% if products %}
+  <h1>Serached for: {{ query }}</h1>
+  <h3>{{products}}</h3>
+  {% else %}
+  <h1>No Product Found</h1>
+  {% endif %}
+</div>
+
+{% endblock %}

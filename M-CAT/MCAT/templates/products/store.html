@@ -1,0 +1,38 @@
+{% extends 'products/base.html' %}
+{% block head_title2 %}
+Welcome To Our
+{% endblock %}
+{% block body_block %}
+{% load staticfiles %}
+<div class = "container" id="product_list_div">
+  <div class="row">
+
+        {% for product in product_list %}
+          <div class="col-sm-3">
+            <div class="thumbnail img-thumbnail">
+              {% if  product.productimage_set.all %}
+                {% for img in product.productimage_set.all %}
+                  {% if img.featured %}
+                    <img class="img-responsive" src="/media/{{img.image}}"/>
+                  {% endif %}
+                {% endfor %}
+                  {% else %}
+                    <img class="img-responsive" src="{% static 'img/placeholder.png' %}"/>
+                  {% endif %}
+                  <div class="caption">
+                      <h3> <a href="{{ product.get_absolute_url }}">{{product.title}}</a></h3>
+                      <p>{{ product.description | truncatewords:15}}</p>
+                      <p><a href="{{ product.get_absolute_url }}" class="btn btn-primary" role="button">View Details</a>
+                         <a href="" class="btn btn-success" role="button">Add To Cart</a>
+                      </p>
+                    </div>
+             </div>
+          </div>
+
+        {% cycle "" "" "" "</div><br/><hr/><div class='row'>" %}
+        {% endfor %}
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+@media (max-width: 768px){
+    #product_list_div{
+      padding-top:100px;
+    }
+  }
+
+#product_list_div{
+  padding-top:70px;
+}
+
+#home_page_carousel{
+  padding-top:55px
+}
