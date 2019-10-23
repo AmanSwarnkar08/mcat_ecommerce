@@ -1,0 +1,29 @@
+{% extends 'products/base.html' %}
+
+{% block body_block %}
+<center>
+<div class="col-sm-8 col-sm-offset-2">
+<table class="table container">
+<thead>
+  <th>Item</th>
+  <th>Price</th>
+  <th></th>
+</thead>
+<tfoot>
+  <tr>
+    <td></td>
+    <td>Total: {{ cart.total }}</td>
+    <td></td>
+  </tr>
+</tfoot>
+{% for item in cart.products.all %}
+
+<tr><td>{{item}}</td><td>{{item.price}}</td><td><a href="{% url 'carts:update_cart' item.slug %}">Remove</a></td></tr>
+
+{% endfor %}
+
+
+</table>
+</div>
+</center>
+{% endblock %}
