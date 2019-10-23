@@ -23,8 +23,6 @@ urlpatterns = [
 
     #url(r'^$',views.Home.as_view(),name='home'),
     url(r'^',include('products.urls'),name = 'products_app'),
-    url(r'^',include('carts.urls'),name = 'carts_app'),
-
     url(r'^admin/', admin.site.urls),
 ]
 
