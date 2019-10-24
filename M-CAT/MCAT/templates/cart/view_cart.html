@@ -1,7 +1,14 @@
 {% extends 'products/base.html' %}
 
+
+
 {% block body_block %}
 <center>
+
+{% if empty %}
+{{ empty_message }}
+{% else %}
+
 <div class="col-sm-8 col-sm-offset-2">
 <table class="table container">
 <thead>
@@ -25,5 +32,7 @@
 
 </table>
 </div>
+
+{% endif %}
 </center>
 {% endblock %}
